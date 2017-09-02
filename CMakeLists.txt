@@ -1,12 +1,20 @@
 cmake_minimum_required(VERSION 3.7)
-project(BLANKOpenGL)
 
+###########################################################################START OF USER CONFIG
+
+project(BLANKOpenGL)
 set (VERSION_MAJOR 0)
-set (VERSION_MINOR 1)
-set (DEBUG false)
+set (VERSION_MINOR 0)
+set (DEBUG true)
+set (SOURCE_FILES src/main.cpp)
+
+############################################################################END OF USER CONFIG
 
 if (WIN32)
-    set(EXE_ARGS ${EXE_ARGS} WIN32)
+    if(NOT DEBUG)
+        set(EXE_ARGS ${EXE_ARGS} WIN32)
+    endif()
+
     if(CMAKE_SIZEOF_VOID_P EQUAL 8)
         set(PLATFORM WIN64)
     else()
@@ -28,7 +36,7 @@ else()
 endif()
 
 #DELETING BIN FILES IF THEY EXSIST
-file(REMOVE_RECURSE ${RELEASE_FOLDER})
+file(MAKE_DIRECTORY ${RELEASE_FOLDER})
 
 if(PLATFORM MATCHES "WIN64")
     #COPYING RES FILES TO BIN
@@ -65,10 +73,6 @@ set(ALL_LIBS
         glfw
         GLEW_1130
         )
-
-
-
-set(SOURCE_FILES src/main.cpp)
 
 add_executable(${PROJECT_NAME} ${EXE_ARGS} ${SOURCE_FILES})
 

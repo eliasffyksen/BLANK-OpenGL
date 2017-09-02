@@ -6,8 +6,8 @@
 #define CONFIG_H
 
 #define VERSION_MAJOR 0
-#define VERSION_MINOR 1
-#define DEBUG false
+#define VERSION_MINOR 0
+#define DEBUG true
 #define PLATFORM WIN64
 
 #if DEBUG
