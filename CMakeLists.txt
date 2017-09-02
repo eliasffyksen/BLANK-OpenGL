@@ -2,10 +2,11 @@ cmake_minimum_required(VERSION 3.7)
 project(BLANKOpenGL)
 
 set (VERSION_MAJOR 0)
-set (VERSION_MINOR 0)
+set (VERSION_MINOR 1)
 set (DEBUG false)
 
 if (WIN32)
+    set(EXE_ARGS ${EXE_ARGS} WIN32)
     if(CMAKE_SIZEOF_VOID_P EQUAL 8)
         set(PLATFORM WIN64)
     else()
@@ -23,7 +24,7 @@ set(CMAKE_CXX_STANDARD 11)
 if(DEBUG)
     set(RELEASE_FOLDER bin/debug)
 else()
-    set(RELEASE_FOLDER bin/release_${PLATFORM}_${VERSION_MAJOR}_${VERSION_MINOR})
+    set(RELEASE_FOLDER bin/release_${PLATFORM}/${VERSION_MAJOR}.${VERSION_MINOR})
 endif()
 
 #DELETING BIN FILES IF THEY EXSIST
@@ -69,6 +70,6 @@ set(ALL_LIBS
 
 set(SOURCE_FILES src/main.cpp)
 
-add_executable(${PROJECT_NAME} ${SOURCE_FILES})
+add_executable(${PROJECT_NAME} ${EXE_ARGS} ${SOURCE_FILES})
 
 target_link_libraries(${PROJECT_NAME} ${ALL_LIBS})
