@@ -34,7 +34,7 @@ But if you are going to build a release you should replace true with false, like
 set (DEBUG false)
 
 
-If you have resources that need to be placed besides the exe file, when compiled, this should be placed inside res, as all files and folders in res will be copied on build
+If you have resources that need to be placed besides the exe file, when compiled (f.e shaders), this should be placed inside the res folder, as all files and folders in res will be copied on build
 
 Now its time to build:
 You only need to load the CMakeLists.txt in the root folder, as this will automaticly call the others
